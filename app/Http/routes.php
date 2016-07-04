@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/auth/login', 'AuthController@login');
+Route::get('/operations', 'PagesController@index');
+Route::get('/message/new', 'ActionsController@newMessageForm');
+Route::post('/message/create', 'ActionsController@createMessage');
