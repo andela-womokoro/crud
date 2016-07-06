@@ -9,6 +9,10 @@
         <div class="container">
             <div class="content">
                 <div class="title"><a href="/">CRUD</a></div>
+                @if(isset($alert))
+                    {{ $alert }}<br />
+                @endif
+                
                 @yield('content')
             </div>
         </div>

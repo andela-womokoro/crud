@@ -10,10 +10,16 @@
     			Messages
     		</th>
     	</tr>
+    	@foreach($messages as $message)
     	<tr>
     		<td align="left">
-    			<br />
+    			<div style="float: left;">{{ $message->body }}</div>
+    			<div style="float: right;">
+    				<a href="/message/edit/{{ $message->id }}">Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+    				<a href="/message/delete/{{ $message->id }}">Delete</a>&nbsp;&nbsp;
+    			</div>
     		</td>
     	</tr>
+    	@endforeach
     </table>
 @endsection
