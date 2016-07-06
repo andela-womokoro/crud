@@ -16,12 +16,11 @@ class ActionsController extends Controller
 
     public function createMessage(Request $request)
     {
-        //$message = Message::find($request->input('id'));
         $message = new Message();
         $message->body = $request->input('message');
         $message->save();
 
-        $messages = Message::all()->sortBy('id');
+        $messages = PagesController::getSortedMessages();
 
         return view('operations', ['alert' => 'Message successfully created.', 'messages'=>$messages]);
     }
@@ -40,8 +39,18 @@ class ActionsController extends Controller
         $message->body = $request->input('message');
         $message->save();
 
-        $messages = Message::all()->sortBy('id');
+        $messages = PagesController::getSortedMessages();
 
         return view('operations', ['alert' => 'Message successfully updated.', 'messages'=>$messages]);
+    }
+
+    public function deleteMessage($id)
+    {
+        $message = Message::find($id);
+        $message->delete();
+
+        $messages = PagesController::getSortedMessages();
+
+        return view('operations', ['alert' => 'Message successfully deleted.', 'messages'=>$messages]);
     }
 }

@@ -16,9 +16,14 @@ class PagesController extends Controller
      */
     public function index()
     {
-        $messages = Message::all()->sortBy('id');
+        $messages = $this::getSortedMessages();
 
         return view('operations', ['messages' => $messages]);
+    }
+
+    public static function getSortedMessages()
+    {
+        return Message::all()->sortBy('id');
     }
 
     /**
