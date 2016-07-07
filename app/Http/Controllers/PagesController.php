@@ -11,7 +11,7 @@ class PagesController extends Controller
 {
     public function index()
     {
-        $messages = $this::getSortedMessages();
+        $messages = self::getSortedMessages();
 
         return view('operations', ['messages' => $messages]);
     }
